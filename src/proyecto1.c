@@ -1,8 +1,12 @@
-#include <time.h>
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#define CALLTIMES 10000
+#include <unistd.h>
+#include <time.h>
+#define contador 20000
+
+clock_t x, y; //x viene siendo el tiempo de partida y y el de llegada
+
+double tiempoFuncion, tiempoSyscalls; //tiempos de la función de los syscalls
 
 int fibo(int n){
     if (n <= 1) 
@@ -10,33 +14,26 @@ int fibo(int n){
     return fibo(n - 1) + fibo(n - 2); 
 }
 
-int main(int argc, char const *argv[])
-{
-    clock_t start, end;
-    double tiempoFuncion, tiempoSistema;
+int main(int argc, char const *argv[]){
 
-    start = clock();
-    {
-        for (int i = 0; i < CALLTIMES; ++i)
-        {
+    x = clock();
+        for (int i = 0; i < contador; ++i){
             fibo(2);
         }
-    }
-    end = clock();
-    tiempoFuncion = ((double) (end - start)) / CLOCKS_PER_SEC;
+    y = clock();
+    tiempoFuncion = ((double) (y - x)) / CLOCKS_PER_SEC;
 
-    start = clock();
-    {
-        for (int i = 0; i < CALLTIMES; ++i)
-        {
+    x = clock();
+        for (int i = 0; i < contador; ++i){
             getpid();
         }
-    }
-    end = clock();
-    tiempoSistema = ((double) (end - start)) / CLOCKS_PER_SEC;
-
-    printf("Llamada a la función fibonacci 10000 veces: %f\n", tiempoFuncion);
-    printf("Llamada al sistema 10000 veces: %f\n", tiempoSistema);
+    y = clock();
+    tiempoSyscalls = ((double) (y - x)) / CLOCKS_PER_SEC;
+	
+	printf("----Comparación de Tiempos----\n");
+	printf("\n");
+    printf("Función fibonacci ejecutada 20000 veces: %f\n", tiempoFuncion);
+    printf("Syscalls ejecutados 20000 veces: %f\n", tiempoSyscalls);
 
     return 0;
 }
