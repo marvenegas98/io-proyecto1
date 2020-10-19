@@ -17,16 +17,16 @@ int fibo(int n){
 int main(int argc, char const *argv[]){
 
     x = clock();
-        for (int i = 0; i < contador; ++i){
-            fibo(2);
-        }
+    
+        for (int i = 0; i < contador; ++i) fibo(2);
+        
     y = clock();
     tiempoFuncion = ((double) (y - x)) / CLOCKS_PER_SEC;
 
     x = clock();
-        for (int i = 0; i < contador; ++i){
-            getpid();
-        }
+    
+        for (int i = 0; i < contador; ++i) getpid();
+        
     y = clock();
     tiempoSyscalls = ((double) (y - x)) / CLOCKS_PER_SEC;
 	
