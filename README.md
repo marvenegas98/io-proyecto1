@@ -2,6 +2,11 @@
 
 Este proyecto consiste en comparar el costo de correr un syscall vs una llamada a un procedimiento.
 
+Integrantes: 
+- Maria Isabel Venegas Berrocal
+- Alejandro Centeno Chaves
+- Hilary González Abarca
+
 # Ejecución del Proyecto
 Se debe correr el programa fuente correspondiente al sistema operativo que se esté usando. 
 
@@ -11,7 +16,7 @@ Al compilar un programa en C sin optimización alguna, se añade la bandera O0 a
 Para ejecutar el programa fuente, se navega a la carpeta "Linux" del proyecto y se ejecuta lo siguiente:
 
     $ make
-    $ ./proyecto1_Linux
+    $ linux
 
 ## Windows
 Al compilar un programa en Windows sin optimización alguna, se ..
@@ -20,7 +25,7 @@ Para ejecutar el programa fuente, se navega a la carpeta "Windows" del proyecto 
 
 
 
-## Resultados Obtenidos
+# Resultados Obtenidos
 
 Se obtuvo que las llamadas al sistema son bastante más costosas que una llamada a un procedimiento.
 
