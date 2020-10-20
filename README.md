@@ -20,7 +20,7 @@ Para ejecutar el programa fuente, se navega a la carpeta "Windows" del proyecto 
 
 
 
-## Resultados Obtenidos
+# Resultados Obtenidos
 
 Se obtuvo que las llamadas al sistema son bastante más costosas que una llamada a un procedimiento.
 
