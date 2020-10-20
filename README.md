@@ -11,7 +11,7 @@ Al compilar un programa en C sin optimización alguna, se añade la bandera O0 a
 Para ejecutar el programa fuente, se navega a la carpeta "Linux" del proyecto y se ejecuta lo siguiente:
 
     $ make
-    $ ./proyecto1_Linux
+    $ linux
 
 ## Windows
 Al compilar un programa en Windows sin optimización alguna, se ..
