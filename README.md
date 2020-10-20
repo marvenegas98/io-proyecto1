@@ -1,8 +1,29 @@
-# io-proyecto1
-Las llamadas al sistema son mayores, en cuanto a duración, que la llamada a una función simple, en este caso fibonacci. 
-Esto es porque el SO cambia entre modo usuario y modo kernel. La llamada en modo usuario, solo requiere llamadas como pasos de parámetros o cosas más
-simples, el llamado al sistema no, esto conlleva otras responsabilidades más extensas.
+# Proyecto 1 - Principios de Sistemas Operativos
 
-Por esto el resultado de nuestro experimento con el getid(), este llamado al sistema requiere de múltiples tareas para el SO y hace que se retrase su transcurso, mientras
-que la llamada a la función fibonacci, solo agarra un parámetro y le saca sus equivalentes hasta obtener un resultado. Pareciera que la función fibonacci tiene más
-procesamiento pero aquí nos damos cuenta que no.
+Este proyecto consiste en comparar el costo de correr un syscall vs una llamada a un procedimiento.
+
+# Ejecución del Proyecto
+Se debe correr el programa fuente correspondiente al sistema operativo que se esté usando. 
+
+## Linux
+Al compilar un programa en C sin optimización alguna, se añade la bandera O0 al comando. Esto se utiliza dentro de nuestro archivo 'makefile'.
+    
+Para ejecutar el programa fuente, se navega a la carpeta del proyecto y se ejecuta lo siguiente:
+
+    $ make
+    $ ./proyecto1_Linux
+
+## Windows
+Al compilar un programa en Windows sin optimización alguna, se ..
+    
+Para ejecutar el programa fuente, se navega a la carpeta del proyecto y se ejecuta lo siguiente:
+
+
+
+## Resultados Obtenidos
+
+Se obtuvo que las llamadas al sistema son bastante más costosas que una llamada a un procedimiento.
+
+Esto sucede porque una llamada un procedimiento no tiene que dar el control al kernel, porque se ejecuta directamente en el modo de usuario. Al ejecutar una llamada al sistema el programa debe cambiar al modo kernel antes de ejecutar la rutina en código SO, y aquí tiene que establecer de cuál llamada al sistema se trata, y si los parámetros que se están pasando están correctos o no. Por último, cambia de regreso al modo de usuario. 
+
+Estos cambios de modos que trae el ejecutar una llamada al sistema ocupa tiempo, de aquí que conllevan un mayor costo. 
