@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
-#define contador 20000
+#define iteraciones 20000
 
 clock_t x, y; //x viene siendo el tiempo de partida y y el de llegada
 
@@ -18,22 +18,22 @@ int main(int argc, char const *argv[]){
 
     x = clock();
     
-        for (int i = 0; i < contador; ++i) fibo(2);
+        for (int i = 0; i < iteraciones; ++i) fibo(2);
         
     y = clock();
     tiempoFuncion = ((double) (y - x)) / CLOCKS_PER_SEC;
 
     x = clock();
     
-        for (int i = 0; i < contador; ++i) getpid();
+        for (int i = 0; i < iteraciones; ++i) getpid();
         
     y = clock();
     tiempoSyscalls = ((double) (y - x)) / CLOCKS_PER_SEC;
 	
 	printf("----Comparación de Tiempos----\n");
 	printf("\n");
-    printf("Función fibonacci ejecutada 20000 veces: %f\n", tiempoFuncion);
-    printf("Syscalls ejecutados 20000 veces: %f\n", tiempoSyscalls);
+    printf("Tiempo de la función fibonacci: %f\n", tiempoFuncion);
+    printf("Tiempo del Syscall: %f\n", tiempoSyscalls);
 
     return 0;
 }

@@ -1,5 +1,5 @@
 # change application name here (executable output name)
-TARGET=proyecto1
+TARGET=proyecto1_Linux
 
 # folders
 SRC=src
