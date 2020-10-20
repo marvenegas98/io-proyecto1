@@ -1,6 +1,10 @@
 # Proyecto 1 - Principios de Sistemas Operativos
 
 Este proyecto consiste en comparar el costo de correr un syscall vs una llamada a un procedimiento.
+Integrantes: 
+Maria Isabel Venegas Berrocal
+Alejandro Centeno Chaves
+Hilary González Abarca
 
 # Ejecución del Proyecto
 Se debe correr el programa fuente correspondiente al sistema operativo que se esté usando. 
