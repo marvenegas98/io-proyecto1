@@ -4,9 +4,8 @@
 
 
 int fibo(int n){
-    if (n <= 1) 
-        return n; 
-    return fibo(n - 1) + fibo(n - 2); 
+    
+    return n; 
 }
 
 void vacia(){
@@ -70,7 +69,7 @@ int main(){
 	printf("----Comparación de Tiempos----\n");
 	printf("\n");
     	printf("Tiempo de la funcion fibonacci de 2: %f\n", tiempoFuncion1);
-	printf("Tiempo de la funcion vacia: %f\n\n", tiempoFuncion2);
+	//printf("Tiempo de la funcion vacia: %f\n\n", tiempoFuncion2);
     	printf("Tiempo del Syscall getpid: %f\n", tiempoSyscall1);
 
   	return 0;

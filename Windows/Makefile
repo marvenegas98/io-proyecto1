@@ -1,13 +1,34 @@
+# change application name here (executable output name)
+TARGET=windows
+
+# folders
+SRC=src
+OBJ=obj
+SOURCES = $(wildcard $(SRC)/*.c)
+OBJECTS = $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SOURCES))
+
+# compiler
 CC=gcc
-CFLAGS=-g -O0
-SOURCES=src\proyecto1_Windows.c
-OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLE=windows
+# debug
+DEBUG=-g
+# optimisation
+OPT=-O0
+# warnings
+WARN=-Wall
 
-all: $(SOURCES) $(EXECUTABLE)
-    
-$(EXECUTABLE): $(OBJECTS) 
-	$(CC) $(CFLAGS) $(OBJECTS) -o $@
 
-.c.o:
-	$(CC) $(CFLAGS) $< -o $@
+# linker
+LD=gcc
+
+all: $(OBJECTS)
+	$(LD) -o $(TARGET) $(OBJECTS)
+
+$(OBJ)/%.o: $(SRC)/%.c
+	$(CC) -c $< -o $@
+
+echo:
+	echo $(SOURCES)
+	ls $(OBJ)
+
+clean:
+	rm -f $(OBJ)\ $(TARGET)
