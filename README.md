@@ -8,7 +8,7 @@ Se debe correr el programa fuente correspondiente al sistema operativo que se es
 ## Linux
 Al compilar un programa en C sin optimización alguna, se añade la bandera O0 al comando. Esto se utiliza dentro de nuestro archivo 'makefile'.
     
-Para ejecutar el programa fuente, se navega a la carpeta del proyecto y se ejecuta lo siguiente:
+Para ejecutar el programa fuente, se navega a la carpeta "Linux" del proyecto y se ejecuta lo siguiente:
 
     $ make
     $ ./proyecto1_Linux
@@ -16,7 +16,7 @@ Para ejecutar el programa fuente, se navega a la carpeta del proyecto y se ejecu
 ## Windows
 Al compilar un programa en Windows sin optimización alguna, se ..
     
-Para ejecutar el programa fuente, se navega a la carpeta del proyecto y se ejecuta lo siguiente:
+Para ejecutar el programa fuente, se navega a la carpeta "Windows" del proyecto y se ejecuta lo siguiente:
 
 
 
