@@ -24,7 +24,7 @@ Al compilar un programa en Windows sin optimización alguna, se añade la bander
 Para ejecutar el programa fuente, se navega a la carpeta "Windows" del proyecto y se ejecuta lo siguiente:
 
     $ make
-    $ Windows.exe
+    $ windows.exe
 
 Para la compilación de este programa se utilizó el paquete mingw, el cual provee el compilador gcc, y para la ejecución del makefile se utilizó el programa make-3.81
 
