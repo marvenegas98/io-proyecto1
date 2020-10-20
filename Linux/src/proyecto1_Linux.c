@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <assert.h>
 #include <sys/time.h>
-#define iteraciones 20000
+#define iteraciones 1000000
 
 double tiempoFuncion, tiempoVacia, tiempoSyscall; //tiempos de la función de los syscalls
 struct timeval tiempoF, tiempoS,tiempoV, tiempoX;
@@ -30,22 +30,22 @@ int main(int argc, char const *argv[]){
 /*               Medicion de tiempo para funcion fibonacci                              */
 /*************************************************************************************/
 
-    res=gettimeofday(&tiempoF,NULL); 
+    gettimeofday(&tiempoF,NULL); 
     
     for (int i = 0; i < iteraciones; ++i) ;
     
-    res=gettimeofday(&tiempoS,NULL);
+    gettimeofday(&tiempoS,NULL);
 
     tiempoFuncion = (obtener_nanosegundos(tiempoS) - obtener_nanosegundos(tiempoF))/(iteraciones*1.0);    
 
 /*************************************************************************************/
 /*               Medicion de tiempo para funcion vacia                               */
 /*************************************************************************************/
-    res=gettimeofday(&tiempoV,NULL);
+    gettimeofday(&tiempoV,NULL);
     
     for (int i = 0; i < iteraciones; ++i) vacia();
     
-    res=gettimeofday(&tiempoX,NULL); 
+    gettimeofday(&tiempoX,NULL); 
 
     tiempoVacia = (obtener_nanosegundos(tiempoX) - obtener_nanosegundos(tiempoV))/(iteraciones*1.0);    
 
@@ -53,11 +53,11 @@ int main(int argc, char const *argv[]){
 /*               Medicion de tiempo para funcion getpid                             */
 /*************************************************************************************/
     
-    res=gettimeofday(&tiempoS,NULL);
+    gettimeofday(&tiempoS,NULL);
     
     for (int i = 0; i < iteraciones; ++i) getpid();
     
-    res=gettimeofday(&tiempoF,NULL);
+    gettimeofday(&tiempoF,NULL);
 
     tiempoSyscall = (obtener_nanosegundos(tiempoF) - obtener_nanosegundos(tiempoS))/(iteraciones*1.0);  
 
