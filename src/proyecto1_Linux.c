@@ -1,39 +1,72 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <time.h>
+#include <assert.h>
+#include <sys/time.h>
 #define iteraciones 20000
 
-clock_t x, y; //x viene siendo el tiempo de partida y y el de llegada
+double tiempoFuncion, tiempoVacia, tiempoSyscall; //tiempos de la función de los syscalls
+struct timeval tiempoF, tiempoS,tiempoV, tiempoX;
 
-double tiempoFuncion, tiempoSyscalls; //tiempos de la función de los syscalls
+long obtener_nanosegundos(struct timeval t){  
+    long a = t.tv_sec*1000000 + t.tv_usec;
+    a *=1000;
+    return a; 
+}
 
 int fibo(int n){
     if (n <= 1) 
         return n; 
     return fibo(n - 1) + fibo(n - 2); 
 }
+void vacia(){
+}
 
 int main(int argc, char const *argv[]){
+   
+    int res;
 
-    x = clock();
-    
-        for (int i = 0; i < iteraciones; ++i) fibo(2);
-        
-    y = clock();
-    tiempoFuncion = ((double) (y - x)) / CLOCKS_PER_SEC;
+/*************************************************************************************/
+/*               Medicion de tiempo para funcion fibonacci                              */
+/*************************************************************************************/
 
-    x = clock();
+    res=gettimeofday(&tiempoF,NULL); 
     
-        for (int i = 0; i < iteraciones; ++i) getpid();
-        
-    y = clock();
-    tiempoSyscalls = ((double) (y - x)) / CLOCKS_PER_SEC;
+    for (int i = 0; i < iteraciones; ++i) ;
+    
+    res=gettimeofday(&tiempoS,NULL);
+
+    tiempoFuncion = (obtener_nanosegundos(tiempoS) - obtener_nanosegundos(tiempoF))/(iteraciones*1.0);    
+
+/*************************************************************************************/
+/*               Medicion de tiempo para funcion vacia                               */
+/*************************************************************************************/
+    res=gettimeofday(&tiempoV,NULL);
+    
+    for (int i = 0; i < iteraciones; ++i) vacia();
+    
+    res=gettimeofday(&tiempoX,NULL); 
+
+    tiempoVacia = (obtener_nanosegundos(tiempoX) - obtener_nanosegundos(tiempoV))/(iteraciones*1.0);    
+
+/*************************************************************************************/
+/*               Medicion de tiempo para funcion getpid                             */
+/*************************************************************************************/
+    
+    res=gettimeofday(&tiempoS,NULL);
+    
+    for (int i = 0; i < iteraciones; ++i) getpid();
+    
+    res=gettimeofday(&tiempoF,NULL);
+
+    tiempoSyscall = (obtener_nanosegundos(tiempoF) - obtener_nanosegundos(tiempoS))/(iteraciones*1.0);  
+
 	
-	printf("----Comparación de Tiempos----\n");
-	printf("\n");
+    printf("----Comparación de Tiempos----\n");
+    printf("\n");
     printf("Tiempo de la función fibonacci: %f\n", tiempoFuncion);
-    printf("Tiempo del Syscall: %f\n", tiempoSyscalls);
+    printf("Tiempo de la función vacia: %f\n", tiempoVacia);
+    printf("Tiempo del Syscall: %f\n", tiempoSyscall);
 
     return 0;
 }
